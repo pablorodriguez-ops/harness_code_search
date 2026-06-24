@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Set environment variables.
-export HARNESS_API_KEY="${1}" # pat.lkfte_XWQJW9c3IRDssoCQ.6a3c11de258de92cd7b2f9a4.cvMS0lbGPHADXGU5pFCl
-export HARNESS_ACCOUNT_ID="${2}" # lkfte_XWQJW9c3IRDssoCQ
+export HARNESS_API_KEY="${1}"
+export HARNESS_ACCOUNT_ID="${2}"
 
 # Set query string.
 query="${3}"
