@@ -10,7 +10,7 @@ El script `search.sh` se utiliza para buscar repositorios en una plataforma (pos
 
 ### Sintaxis
 ```sh
-./search.sh <HARNESS_API_KEY> <HARNESS_ACCOUNT_ID> "término_de_búsqueda"
+./search.sh <HARNESS_API_KEY> <HARNESS_ACCOUNT_ID> "término de búsqueda"
 ```
 
 ### Parámetros
@@ -18,7 +18,14 @@ El script `search.sh` se utiliza para buscar repositorios en una plataforma (pos
 |---------------------|---------------------------------------|
 | HARNESS_API_KEY     | Clave de API para autenticación       |
 | HARNESS_ACCOUNT_ID  | Identificador único de la cuenta      |
-| término_de_búsqueda | El texto a buscar en los repositorios. |
+| término de búsqueda | El texto a buscar en los repositorios. |
+
+## Nota para usuarios de Mac
+Si estás utilizando un sistema operativo Mac, asegúrate de que la primera línea del script sea:
+```sh
+#!/usr/bin/env bash
+```
+Esto garantiza que se utilice el intérprete `bash` instalado en tu sistema.
 
 ## Flujo del Script
 
@@ -47,17 +54,30 @@ El script `search.sh` se utiliza para buscar repositorios en una plataforma (pos
 Para buscar todos los repositorios que contengan el término "api" utilizando una clave de API específica y un identificador de cuenta, se ejecutaría:
 
 ```sh
-./search.sh "pat.harness.token" "harness.account" "api"
+./search.sh "pat.6a3c11de258de92cd7b2f9a4.3c11de258de92cd7b2f9.11de258de92cd7b2f9a" "de258de92cd7b2f9a46a3c11" "api"
 ```
 
 ## Salida esperada
-Después de la ejecución, en `output.csv` encontrarás una lista con los siguientes campos:
-- **Org**: Identificador de la organización.
-- **Project**: Identificador del proyecto.
-- **Identifier**: Identificador del repositorio.
-- **Git_URL**: URL del repositorio Git.
 
-Además, se imprimirá en consola el número de repositorios encontrados para cada combinación de organización y proyecto.
+### Archivo CSV
+El archivo CSV se genera en un directorio llamado `search` y su nombre es basado en el término de búsqueda, reemplazando los espacios por guiones bajos. Por ejemplo, si el término de búsqueda es "api", el archivo generado será `search/api.csv`.
+
+Ejemplo de contenido del archivo CSV:
+```
+Org,Project,Identifier,Git_URL
+org1,project1,repo1,https://git.example.com/repo1.git
+org1,project2,repo2,https://git.example.com/repo2.git
+org2,project3,repo3,https://git.example.com/repo3.git
+```
+
+### Mensajes en consola
+Después de la ejecución, se imprimirá en consola el número de repositorios encontrados para cada combinación de organización y proyecto. Por ejemplo:
+```
+Scanning - Query: api
+2 repos found | ORG: org1 Project: project1
+3 repos found | ORG: org1 Project: project2
+1 repo found | ORG: org2 Project: project3
+```
 
 ## Notas
 - Asegúrate de proporcionar las claves de API y los identificadores de cuenta correctos como argumentos al script.

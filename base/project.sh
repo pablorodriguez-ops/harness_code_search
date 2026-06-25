@@ -1,5 +1,3 @@
-#!/bin/bash
-
 # Set environment variables.
 TOKEN=$HARNESS_API_KEY
 ACCOUNT=$HARNESS_ACCOUNT_ID
